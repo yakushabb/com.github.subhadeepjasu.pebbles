@@ -42,5 +42,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/SubhadeepJasu/pebbles.git
-        tag: v1.1.0
-        commit: a0432835d2e6dff8110d606debd1941fb1f8da42
+        tag: v1.1.1
+        commit: 9fc5dfae42a15d220a31e9bf6c507cc421277f6c
