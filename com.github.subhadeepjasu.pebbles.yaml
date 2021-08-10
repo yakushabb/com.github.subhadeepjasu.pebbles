@@ -1,9 +1,7 @@
 app-id: com.github.subhadeepjasu.pebbles
-sdk: org.freedesktop.Sdk
-runtime: org.freedesktop.Platform
-runtime-version: '20.08'
-base: io.elementary.BaseApp
-base-version: juno-20.08
+sdk: io.elementary.Sdk
+runtime: io.elementary.Platform
+runtime-version: '6'
 command: com.github.subhadeepjasu.pebbles
 finish-args:
   - --share=network
@@ -42,5 +40,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/SubhadeepJasu/pebbles.git
-        tag: v1.1.1
-        commit: 9fc5dfae42a15d220a31e9bf6c507cc421277f6c
+        tag: v2.0.0
+        commit: c6e1351bb10f95302e6dd7e0ffc03e9e65adbc63
