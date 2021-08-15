@@ -75,9 +75,13 @@ modules:
                   - autoreconf -si
 
   - name: gsl
+    config-opts:
+      - --disable-static
+    cleanup:
+      - /bin
     sources:
       - type: archive
-        url: https://mirror.ibcp.fr/pub/gnu/gsl/gsl-latest.tar.gz
+        url: https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
         sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
  
   - name: Pebbles
