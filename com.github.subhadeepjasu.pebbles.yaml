@@ -1,13 +1,18 @@
 app-id: com.github.subhadeepjasu.pebbles
-sdk: io.elementary.Sdk
-runtime: io.elementary.Platform
-runtime-version: '6'
+sdk: org.freedesktop.Sdk
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+base: io.elementary.BaseApp
+base-version: juno-20.08
 command: com.github.subhadeepjasu.pebbles
 finish-args:
   - --share=network
   - --share=ipc
   - --socket=wayland
   - --socket=fallback-x11
+  - --system-talk-name=org.freedesktop.Accounts
+  - --metadata=X-DConf=migrate-path=/com/github/subhadeepjasu/pebbles
+
 cleanup:
   - '.la'
   - '*.a'
@@ -28,7 +33,47 @@ cleanup:
   - /share/vala-0.48
   - /share/valadoc
   - /share/valadoc-0.48
+
 modules:
+  - name: libhandy
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libhandy.git
+        tag: 1.2.3
+        commit: e9ca4ac4b134bbd6ab91b6f916a915192fd3a465
+    config-opts:
+      - -Dglade_catalog=disabled
+      - -Dvapi=true
+      - -Dtests=false
+      - -Dexamples=false
+
+  - name: elementary-stylesheet
+    sources:
+      - type: git
+        url: https://github.com/elementary/stylesheet.git
+        commit: 96d50ee5fe3d71a6179e3c2d55bb22aa07e01574
+    modules:
+      - name: sassc
+        sources:
+          - type: git
+            url: https://github.com/sass/sassc.git
+            tag: 3.6.1
+          - type: script
+            dest-filename: autogen.sh
+            commands:
+              - autoreconf -si
+        modules:
+          - name: libsass
+            sources:
+              - type: git
+                url: https://github.com/sass/libsass.git
+                tag: 3.6.4
+              - type: script
+                dest-filename: autogen.sh
+                commands:
+                  - autoreconf -si
+
   - name: gsl
     sources:
       - type: archive
