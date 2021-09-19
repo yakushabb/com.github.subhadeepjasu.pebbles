@@ -1,7 +1,7 @@
 app-id: com.github.subhadeepjasu.pebbles
-sdk: org.freedesktop.Sdk
-runtime: org.freedesktop.Platform
-runtime-version: '20.08'
+sdk: org.gnome.Sdk
+runtime: org.gnome.Platform
+runtime-version: '40'
 base: io.elementary.BaseApp
 base-version: juno-20.08
 command: com.github.subhadeepjasu.pebbles
@@ -48,31 +48,36 @@ modules:
       - -Dtests=false
       - -Dexamples=false
 
-  # - name: elementary-stylesheet
-  #   sources:
-  #     - type: git
-  #       url: https://github.com/elementary/stylesheet.git
-  #       commit: 96d50ee5fe3d71a6179e3c2d55bb22aa07e01574
-  #   modules:
-  #     - name: sassc
-  #       sources:
-  #         - type: git
-  #           url: https://github.com/sass/sassc.git
-  #           tag: 3.6.1
-  #         - type: script
-  #           dest-filename: autogen.sh
-  #           commands:
-  #             - autoreconf -si
-  #       modules:
-  #         - name: libsass
-  #           sources:
-  #             - type: git
-  #               url: https://github.com/sass/libsass.git
-  #               tag: 3.6.4
-  #             - type: script
-  #               dest-filename: autogen.sh
-  #               commands:
-  #                 - autoreconf -si
+  - name: elementary-stylesheet
+    buildsystem: meson
+    sources:
+    - type: git
+      url: https://github.com/elementary/stylesheet.git
+      commit: 3047efbfabe723e0b0f2b8ee3d53bed528be4b14
+    modules:
+    - name: sassc
+      cleanup:
+      - "*"
+      sources:
+      - type: git
+        url: https://github.com/sass/sassc.git
+        tag: 3.6.1
+      - type: script
+        dest-filename: autogen.sh
+        commands:
+        - autoreconf -si
+      modules:
+      - name: libsass
+        cleanup:
+        - "*"
+        sources:
+        - type: git
+          url: https://github.com/sass/libsass.git
+          tag: 3.6.4
+        - type: script
+          dest-filename: autogen.sh
+          commands:
+          - autoreconf -si
 
   - name: gsl
     config-opts:
@@ -89,5 +94,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/SubhadeepJasu/pebbles.git
-        tag: v2.0.0
-        commit: c6e1351bb10f95302e6dd7e0ffc03e9e65adbc63
+        tag: v2.0.2
+        commit: 71656152e6acf26759b162473575eb7f13fbf537
