@@ -88,11 +88,11 @@ modules:
       - type: archive
         url: https://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz
         sha256: b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8
- 
+
   - name: Pebbles
     buildsystem: meson
     sources:
       - type: git
         url: https://github.com/SubhadeepJasu/pebbles.git
-        tag: v2.0.3
-        commit: 9b162f05142601b53869555a85914118dae15622
+        tag: v2.0.5
+        commit: 44b66773fed561d7a9f74a3b4877ee15ac0a1eb7
