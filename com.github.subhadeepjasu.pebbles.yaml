@@ -36,6 +36,8 @@ cleanup:
   - /share/valadoc-0.48
 
 modules:
+  - shared-modules/libsoup/libsoup-2.4.json
+
   - name: libhandy
     buildsystem: meson
     sources:
