@@ -1,11 +1,12 @@
 app-id: com.github.subhadeepjasu.pebbles
 sdk: org.gnome.Sdk
 runtime: org.gnome.Platform
-runtime-version: '42'
+runtime-version: '44'
 base: io.elementary.BaseApp
-base-version: juno-21.08
+base-version: juno-22.08
 command: com.github.subhadeepjasu.pebbles
 finish-args:
+  - --device=dri
   - --share=network
   - --share=ipc
   - --socket=wayland
@@ -35,6 +36,8 @@ cleanup:
   - /share/valadoc-0.48
 
 modules:
+  - shared-modules/libsoup/libsoup-2.4.json
+
   - name: libhandy
     buildsystem: meson
     sources:
