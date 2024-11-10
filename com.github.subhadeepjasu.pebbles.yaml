@@ -1,9 +1,9 @@
 app-id: com.github.subhadeepjasu.pebbles
-sdk: org.gnome.Sdk
-runtime: org.gnome.Platform
-runtime-version: '44'
+sdk: org.freedesktop.Sdk
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
 base: io.elementary.BaseApp
-base-version: juno-22.08
+base-version: juno-23.08
 command: com.github.subhadeepjasu.pebbles
 finish-args:
   - --device=dri
@@ -50,37 +50,6 @@ modules:
       - -Dvapi=true
       - -Dtests=false
       - -Dexamples=false
-
-  - name: elementary-stylesheet
-    buildsystem: meson
-    sources:
-    - type: git
-      url: https://github.com/elementary/stylesheet.git
-      commit: 3047efbfabe723e0b0f2b8ee3d53bed528be4b14
-    modules:
-    - name: sassc
-      cleanup:
-      - "*"
-      sources:
-      - type: git
-        url: https://github.com/sass/sassc.git
-        tag: 3.6.1
-      - type: script
-        dest-filename: autogen.sh
-        commands:
-        - autoreconf -si
-      modules:
-      - name: libsass
-        cleanup:
-        - "*"
-        sources:
-        - type: git
-          url: https://github.com/sass/libsass.git
-          tag: 3.6.4
-        - type: script
-          dest-filename: autogen.sh
-          commands:
-          - autoreconf -si
 
   - name: gsl
     config-opts:
